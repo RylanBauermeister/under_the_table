@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
+
   before_action :redirect_if_not_login, except: [:new, :create]
-=======
-  before_action :redirect_if_not_login
   before_action :is_own_page, only: [:show]
->>>>>>> 0d17669c6edd2e3abb0683f1d4e88e515e31f4a1
+
 
 
   def index
