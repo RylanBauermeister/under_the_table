@@ -1,0 +1,9 @@
+<img src="<%=@user.profile_picture_url%>" alt="">
+<h2><%=@user.username%></h2>
+<p><%= link_to "Edit", edit_user_path(@user)%></p>
+<p><%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete%></p>
+<div>
+  <%= "#{@user.profession} in #{@user.location}"%>
+</div>
+
+<%= link_to "Back", users_path %>

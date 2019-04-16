@@ -1,0 +1,20 @@
+<%= form_for user do |f| %>
+  <div>
+    <%= f.label "User Name" %> <br>
+    <%= f.text_field :username %>
+  </div>
+  <div>
+    <%= f.label "Profession" %> <br>
+    <%= f.text_field :profession %>
+  </div>
+  <div>
+    <%= f.label "Location" %> <br>
+    <%= f.text_field :location %>
+  </div>
+  <div>
+    <%= f.label "Profile URL" %> <br>
+    <%= f.text_field :profile_picture_url %>
+  </div>
+
+  <%= f.submit%>
+<% end %>
