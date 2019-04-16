@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+<<<<<<< HEAD
   before_action :redirect_if_not_login, except: [:new, :create]
+=======
+  before_action :redirect_if_not_login
+  before_action :is_own_page, only: [:show]
+>>>>>>> 0d17669c6edd2e3abb0683f1d4e88e515e31f4a1
 
 
   def index
@@ -39,6 +44,14 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def donate
+
+  end
+
+  def donations
+
+  end
+
 
   private
 
@@ -48,5 +61,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :profession, :location, :profile_picture_url, :password, :password_confirmation)
+  end
+
+  def is_own_page
+    @is_own_page = @user == User.find(session[:user_id])
   end
 end
