@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :reviews
   resources :messages
   resources :donations
-  resources :users
+  resources :users do
+    get '/donations', to: 'users#donations', as: "donations"
+  end
   get '/', to: 'static#index'
   get '/login', to: 'static#login'
   post '/login', to: 'static#attempt_login'
