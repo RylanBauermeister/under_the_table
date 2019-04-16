@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_not_login
+  before_action :redirect_if_not_login, except: [:new, :create]
 
 
   def index
@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
   end
 
   def new
