@@ -16,5 +16,14 @@
     <%= f.text_field :profile_picture_url %>
   </div>
 
+  <div>
+    <%= f.label "Password" %> <br>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label "Confirm Password" %> <br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
   <%= f.submit%>
 <% end %>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_login
 
 
   def index
@@ -27,8 +28,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -44,6 +48,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :profession, :location, :profile_picture_url)
+    params.require(:user).permit(:username, :profession, :location, :profile_picture_url, :password, :password_confirmation)
   end
 end

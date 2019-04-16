@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_secure_password
+  validates :password, confirmation: true
+
   has_many :donations_made, :class_name => "Donation", :foreign_key => "sender_id"
   has_many :donations_received, :class_name => "Donation", :foreign_key => "receiver_id"
 
