@@ -4,7 +4,7 @@ class CreateDonations < ActiveRecord::Migration[5.2]
       t.integer :sender_id
       t.integer :receiver_id
       t.integer :amount
-      t.string :content
+      t.string  :content
 
       t.timestamps
     end
