@@ -57,10 +57,10 @@ class UsersController < ApplicationController
 
   def message_thread
     @user = current_user
-    @messages = Message.all.select {|m| m.sender_id == @user.id && m.receiver_id == params[:receiver_id].to_i}
-    @messages << Message.all.select {|m| m.sender_id == params[:receiver_id].to_i && m.receiver_id == @user.id}
-    @messages.flatten!
-    @messages.sort_by {|m| m.created_at}
+    messages = Message.all.select {|m| m.sender_id == @user.id && m.receiver_id == params[:receiver_id].to_i}
+    messages << Message.all.select {|m| m.sender_id == params[:receiver_id].to_i && m.receiver_id == @user.id}
+    messages.flatten!
+    @messages_sorted = messages.sort_by {|m| m.created_at}
   end
 
   private
