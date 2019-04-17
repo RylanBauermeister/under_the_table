@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get '/users/messages', to: 'users#messages', as: "users_messages"
-  get '/users/messages/:receiver_id', to: 'users#message_thread', as: "users_message_thread"
+  
+  get '/messages/inbox', to: 'messages#inbox', as: "inbox"
+  get '/messages/:receiver_id', to: 'messages#message_thread', as: "message_thread"
 
   resources :notifications
   resources :reviews
