@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.new_message(message_params)
     if @message.save
-      redirect_to user_messages_path(current_user)
+      redirect_to users_messages_path(current_user)
     else
       render :new
     end
