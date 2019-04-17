@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @reviews = @user.reviews
     if is_own_page
       @notifications = current_user.active_notifications
+      current_user.clear_review_notifications
     end
   end
 
@@ -54,7 +55,8 @@ class UsersController < ApplicationController
 
   def messages
     @user = current_user
-    @users_corresponded_with = current_user.messages_sent.collect {|m| User.find(m.receiver_id)}.uniq
+    @users_corresponded_with = current_user.messages_sent.collect {|m| User.find(m.receiver_id)}.uniq +
+                               current_user.messages_received.collect {|m| User.find(m.sender_id)}.uniq
   end
 
   def message_thread
@@ -64,6 +66,8 @@ class UsersController < ApplicationController
     messages << Message.all.select {|m| m.sender == @receiver && m.receiver == @user}
     messages.flatten!
     @messages_sorted = messages.sort_by {|m| m.created_at}.reverse
+
+    current_user.clear_message_notifications(@receiver)
   end
 
   private
