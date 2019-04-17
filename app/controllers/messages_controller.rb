@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    @users = User.all
+    @users_not = User.all_not(current_user)
   end
 
   def create
