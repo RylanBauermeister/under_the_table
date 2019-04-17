@@ -1,2 +1,19 @@
 <h2>New Message</h2>
-<%= render partial:'form', locals:{users: @users, message: @message} %>
+
+<%= form_for @message do |f| %>
+  <div>
+    <%= f.label "Send Message To" %> <br>
+    <%= f.collection_select(:receiver_id, @users, :id, :username) %>
+
+  </div>
+  <div>
+    <%= f.label "Title" %> <br>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label "Message" %> <br>
+    <%= f.text_area :content %>
+  </div>
+
+  <%= f.submit%>
+<% end %>

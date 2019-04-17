@@ -17,8 +17,8 @@ class User < ApplicationRecord
     Donation.new(sender: self, receiver_id: params[:receiver_id], amount: params[:amount], content: params[:content])
   end
 
-  def new_message(receiver:, title:, content:)
-    Message.new(sender: self, receiver: receiver, title: title, content: content)
+  def new_message(params)
+    Message.new(sender: self, receiver_id: params[:receiver_id], title: params[:title], content: params[:content])
   end
 
   def new_review(user:, rating:, content:)
