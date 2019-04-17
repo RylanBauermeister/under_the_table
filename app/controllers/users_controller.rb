@@ -43,12 +43,10 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def donate
-
-  end
-
-  def donations
-
+  def morph
+    @user = User.find(params[:user_id])
+    session[:user_id] = @user.id
+    redirect_to user_path(@user)
   end
 
   def messages

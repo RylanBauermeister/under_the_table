@@ -2,6 +2,7 @@
 <div style="float: right">
   <% if @is_own_page %>
   <div>
+    <%= link_to "My Donations", donations_path %><br>
     <%= link_to "Make Donation", new_donation_path %><br>
     <%= link_to "Send Message", new_message_path %><br>
     <%= link_to "Inbox", users_messages_path %>
@@ -16,12 +17,19 @@
 </div>
 <h3>Reviews</h3>
 <div class="reviews_div">
-  <% @reviews.each do |review| %>
-    <div class="review">
-      <h4> <%= review.writer.username %> says...</h4>
-      <%= review.content %> <br>
-      <p>Posted at <%= review.created_at%></p>
+  <% if !@reviews.empty? %>
+    <% @reviews.each do |review| %>
+      <div class="review">
+        <h4> <%= review.writer.username %> says...</h4>
+        <%= review.content %> <br>
+        <p>Posted at <%= review.created_at%></p>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="no_reviews">
+      No reviews yet!  Check back later.
     </div>
   <% end %>
 </div>
 <%= link_to "Back", users_path %>
+<%= link_to "Become This User", user_morph_path(@user) %>

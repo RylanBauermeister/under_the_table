@@ -25,8 +25,8 @@ class User < ApplicationRecord
     Review.new(writer: self, user_id: params[:user_id], rating: params[:rating], content: params[:content])
   end
 
-  def new_notification(user, content)
-    Notification.new(user: user, content: content)
+  def create_notification(user, content)
+    Notification.create(user: user, content: content)
   end
 
   def self.all_not(user)

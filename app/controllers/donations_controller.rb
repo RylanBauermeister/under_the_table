@@ -14,6 +14,7 @@ class DonationsController < ApplicationController
   def create
     @donation = current_user.new_donation(donation_params)
     if @donation.save
+      current_user.create_notification(@donation.receiver, @donation)
       redirect_to donations_path
     else
       render :new
