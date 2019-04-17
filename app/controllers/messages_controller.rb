@@ -15,6 +15,23 @@ class MessagesController < ApplicationController
     end
   end
 
+  def inbox
+    @user = current_user
+    other_users = User.all_not(current_user)
+    @users_corresponded_with = @user.messages_sent.collect {|m| other_users.find(m.receiver_id)}
+    @users_corresponded_with << @user.messages_received.collect {|m| other_users.find(m.sender_id)}
+    @users_corresponded_with.flatten!.uniq!
+  end
+
+  def message_thread
+    @user = current_user
+    @receiver = User.find(params[:receiver_id])
+    messages = Message.all.select {|m| m.sender == @user && m.receiver == @receiver}
+    messages << Message.all.select {|m| m.sender == @receiver && m.receiver == @user}
+    messages.flatten!
+    @messages_sorted = messages.sort_by {|m| m.created_at}.reverse
+  end
+
   private
 
   def message_params
