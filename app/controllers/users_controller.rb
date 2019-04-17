@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   before_action :redirect_if_not_login, except: [:new, :create]
   before_action :is_own_page, only: [:show]
 
-
-
   def index
     @users = User.all
   end
@@ -51,7 +49,10 @@ class UsersController < ApplicationController
 
   def messages
     @user = current_user
-    @users_corresponded_with = current_user.messages_sent.collect {|m| User.find(m.receiver_id)}.uniq
+    other_users = User.all_not(current_user)
+    @users_corresponded_with = @user.messages_sent.collect {|m| other_users.find(m.receiver_id)}
+    @users_corresponded_with << @user.messages_received.collect {|m| other_users.find(m.sender_id)}
+    @users_corresponded_with.flatten!.uniq!
   end
 
   def message_thread
