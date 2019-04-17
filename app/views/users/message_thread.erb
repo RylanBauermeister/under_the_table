@@ -1,7 +1,7 @@
-<h3> <%= @receiver.username %> </h3>
+<h3> <%= link_to @receiver.username, user_path(@receiver) %> </h3>
 <ol>
   <% @messages_sorted.each do |message| %>
-      <% if message.sender = @user %>
+      <% if message.sender == @user %>
         <% symbol = "-->" %>
       <% else %>
         <% symbol = "<--" %>

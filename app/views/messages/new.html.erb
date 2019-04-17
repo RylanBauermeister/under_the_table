@@ -3,7 +3,7 @@
 <%= form_for @message do |f| %>
   <div>
     <%= f.label "Send Message To" %> <br>
-    <%= f.collection_select(:receiver_id, @users_not, :id, :username) %>
+    <%= f.collection_select(:receiver_id, @other_users, :id, :username) %>
 
   </div>
   <div>
