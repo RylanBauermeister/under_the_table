@@ -1,6 +1,12 @@
+<h3> <%= @receiver.username %> </h3>
 <ol>
   <% @messages_sorted.each do |message| %>
-      <li> <%= message.sender.username %> - <%= message.title %> - <%= message.created_at %> </li>
-      <p> <%= message.content %> </p>
+      <% if message.sender = @user %>
+        <% symbol = "-->" %>
+      <% else %>
+        <% symbol = "<--" %>
+      <% end %>
+      <li> <b> <%= symbol %> <%= message.title %></b> - <%= message.created_at.strftime("%e %b %Y, %l:%M %p") %><br>
+      <p> <%= message.content %> </p> </li>
   <% end %>
 </ol>
