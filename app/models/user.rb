@@ -26,6 +26,6 @@ class User < ApplicationRecord
   end
 
   def new_notification(user, content)
-    Notification.new(user: user, content: review)
+    Notification.new(user: user, content: content)
   end
 end
