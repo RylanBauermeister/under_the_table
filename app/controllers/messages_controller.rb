@@ -6,10 +6,11 @@ class MessagesController < ApplicationController
   end
 
   def create
+    user = current_user
     @message = current_user.new_message(message_params)
     if @message.save
       current_user.create_notification(@message.receiver, @message)
-      redirect_to users_messages_path(current_user)
+      redirect_to message_path(user)
     else
       render :new
     end
@@ -30,7 +31,6 @@ class MessagesController < ApplicationController
     messages << Message.all.select {|m| m.sender == @receiver && m.receiver == @user}
     messages.flatten!
     @messages_sorted = messages.sort_by {|m| m.created_at}.reverse
-
     current_user.clear_message_notifications(@receiver)
   end
 
