@@ -14,10 +14,13 @@
 <div>
   <%= "#{@user.profession} in #{@user.location}"%>
 </div>
+<h3>Reviews</h3>
 <div class="reviews_div">
-  <%= @reviews.each do |review| %>
-    <div class="">
-
+  <% @reviews.each do |review| %>
+    <div class="review">
+      <h4> <%= review.writer.username %> says...</h4>
+      <%= review.content %> <br>
+      <p>Posted at <%= review.created_at%></p>
     </div>
   <% end %>
 </div>
