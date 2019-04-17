@@ -3,6 +3,11 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @other_users = User.all_not(current_user)
+    if flash[:receiver_id]
+      @receiver_id = flash[:receiver_id]
+    else
+      @receiver_id = 1
+    end
   end
 
   def create
