@@ -1,14 +1,19 @@
 class DonationsController < ApplicationController
 
+  before_action :redirect_if_not_login
+
   def new
     @donation = Donation.new
   end
 
+  def index
+    @donations = current_user.donations_made
+  end
+
   def create
-    byebug
     @donation = current_user.new_donation(donation_params)
     if @donation.save
-      redirect_to user_donations_path(current_user)
+      redirect_to donations_path
     else
       render :new
     end

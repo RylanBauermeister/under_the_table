@@ -1,9 +1,11 @@
 <img src="<%=@user.profile_picture_url%>" alt="">
 <div style="float: right">
+  <% if @is_own_page %>
   <div>
     <%= link_to "Make Donation", new_donation_path %><br>
     <%= link_to "Send Message", new_message_path %>
   </div>
+  <% end %>
 </div>
 <h2><%=@user.username%></h2>
 <%= link_to "Edit", edit_user_path(@user)%><%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete%>

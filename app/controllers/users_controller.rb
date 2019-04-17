@@ -46,10 +46,6 @@ class UsersController < ApplicationController
 
   end
 
-  def donations
-
-  end
-
 
   private
 

@@ -1,0 +1,11 @@
+<h3>Charitable Donations Made</h3>
+<ul>
+  <% @donations.each do |donation|%>
+    <li>
+      <%="Donated $#{donation.amount} to "%> <%= link_to donation.receiver.username, user_path(donation.receiver)%>
+      <div>
+        <%= donation.content %>
+      </div>
+    </li>
+  <% end %>
+</ul>
