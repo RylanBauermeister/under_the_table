@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  
-  get '/messages/inbox', to: 'messages#inbox', as: "inbox"
-  get '/messages/:receiver_id', to: 'messages#message_thread', as: "message_thread"
 
   resources :notifications
   resources :reviews
-  resources :messages
+  resources :messages, except: [:show]
+  get '/messages/inbox', to: 'messages#inbox', as: "inbox"
+  get '/messages/:receiver_id', to: 'messages#message_thread', as: "message_thread"
   resources :donations
   resources :users do
     get '/donations', to: 'users#donations', as: "donations"
