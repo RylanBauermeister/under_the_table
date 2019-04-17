@@ -46,8 +46,6 @@ class UsersController < ApplicationController
 
   end
 
-<<<<<<< HEAD
-=======
   def donations
 
   end
@@ -64,7 +62,6 @@ class UsersController < ApplicationController
     @messages.flatten!
     @messages.sort_by {|m| m.created_at}
   end
->>>>>>> 4d21fccc024c54d331696441d14b7f755ef9eb84
 
   private
 

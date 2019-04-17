@@ -11,7 +11,7 @@
   </div>
 
   <div>
-    <%= f.collection_select :receiver_id, User.select {|user| user != current_user}, :id, :username,  %><br>
+    <%= f.collection_select :receiver_id, @other_users, :id, :username %><br>
   </div>
 
 

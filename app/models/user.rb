@@ -21,11 +21,16 @@ class User < ApplicationRecord
     Message.new(sender: self, receiver_id: params[:receiver_id], title: params[:title], content: params[:content])
   end
 
-  def new_review(user:, rating:, content:)
-    Review.new(writer: self, user: user, rating: rating, content: content)
+  def new_review(params)
+    Review.new(writer: self, user_id: params[:user_id], rating: params[:rating], content: params[:content])
   end
 
   def new_notification(user, content)
-    Notification.new(user: user, content: review)
+    Notification.new(user: user, content: content)
   end
+
+  def self.all_not(user)
+    User.where.not(id: user.id)
+  end
+
 end

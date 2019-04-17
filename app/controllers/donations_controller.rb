@@ -4,6 +4,7 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new
+    @other_users = User.all_not(current_user)
   end
 
   def index

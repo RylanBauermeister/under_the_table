@@ -9,10 +9,16 @@
   <% end %>
 </div>
 <h2><%=@user.username%></h2>
-<%= link_to "Edit", edit_user_path(@user)%><%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete%>
+<%= link_to "Edit", edit_user_path(@user)%> <%= link_to("Review This User", new_review_path) if !@is_own_page%>
+<%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete%>
 <div>
   <%= "#{@user.profession} in #{@user.location}"%>
 </div>
-<div>
+<div class="reviews_div">
+  <%= @reviews.each do |review| %>
+    <div class="">
+
+    </div>
+  <% end %>
 </div>
 <%= link_to "Back", users_path %>

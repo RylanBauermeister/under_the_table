@@ -1,0 +1,20 @@
+<h2>Make A Review</h2>
+
+<%= form_for @review do |f| %>
+
+  <div>
+    <%= f.label "User:" %> <br>
+    <%= f.collection_select :user_id, @users, :id, :username%>
+  </div>
+  <div>
+    <%= f.label "Rating:" %>
+    <%= f.number_field :rating, max: 5, min: 0%>
+  </div>
+  <div>
+    <%= f.label "Comment:" %> <br>
+    <%= f.text_area :content%>
+  </div>
+
+  <%= f.submit "Create Review"%>
+
+<% end %>
