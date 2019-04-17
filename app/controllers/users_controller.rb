@@ -50,6 +50,18 @@ class UsersController < ApplicationController
 
   end
 
+  def messages
+    @user = current_user
+    @users_corresponded_with = current_user.messages_sent.collect {|m| User.find(m.receiver_id)}.uniq
+  end
+
+  def message_thread
+    @user = current_user
+    @messages = Message.all.select {|m| m.sender_id == @user.id && m.receiver_id == params[:receiver_id].to_i}
+    @messages << Message.all.select {|m| m.sender_id == params[:receiver_id].to_i && m.receiver_id == @user.id}
+    @messages.flatten!
+    @messages.sort_by {|m| m.created_at}
+  end
 
   private
 

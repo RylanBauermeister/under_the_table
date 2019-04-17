@@ -1,0 +1,6 @@
+<ol>
+  <% @messages.each do |message| %>
+      <li> <%= message.sender.username %> - <%= message.title %> </li>
+      <p> <%= message.content %> </p>
+  <% end %>
+</ol>
