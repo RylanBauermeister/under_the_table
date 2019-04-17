@@ -8,7 +8,15 @@ class DonationsController < ApplicationController
   end
 
   def index
-    @donations = current_user.donations_made
+    @donations_made = current_user.donations_made
+    @donations_received = current_user.donations_received
+
+    #Clear donation notifications
+    current_user.notifications.each {|notification|
+      if notification.content_type == "Donation"
+        notification.update(active: false)
+      end
+    }
   end
 
   def create

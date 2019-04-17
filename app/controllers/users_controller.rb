@@ -12,6 +12,9 @@ class UsersController < ApplicationController
 
   def show
     @reviews = @user.reviews
+    if is_own_page
+      @notifications = current_user.active_notifications
+    end
   end
 
   def new

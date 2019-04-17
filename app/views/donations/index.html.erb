@@ -1,8 +1,20 @@
 <h3>Charitable Donations Made</h3>
 <ul>
-  <% @donations.each do |donation|%>
+  <% @donations_made.each do |donation|%>
     <li>
       <%="Donated $#{donation.amount} to "%> <%= link_to donation.receiver.username, user_path(donation.receiver)%>
+      <div>
+        <%= donation.content %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<h3>Charitable Donations Received</h3>
+<ul>
+  <% @donations_received.each do |donation|%>
+    <li>
+      <%= link_to donation.sender.username, user_path(donation.sender)%><%=" donated $#{donation.amount}"%> 
       <div>
         <%= donation.content %>
       </div>

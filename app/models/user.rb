@@ -29,6 +29,10 @@ class User < ApplicationRecord
     Notification.create(user: user, content: content)
   end
 
+  def active_notifications
+    notifications.where(active: true)
+  end
+
   def self.all_not(user)
     User.where.not(id: user.id)
   end

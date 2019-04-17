@@ -1,0 +1,14 @@
+<h2>My Notifications</h2>
+<% if @notifications.empty? %>
+  <div class="notifications">
+    No pending notifications!
+  </div>
+<% else %>
+  <div class="notifications_container">
+    <% @notifications.each do |notification| %>
+      <div class="notification_details">
+        <%= link_to "New #{notification.content_type}", "#{notification.content_type.downcase.pluralize}/"%>
+      </div>
+    <% end %>
+  </div>
+<% end %>
