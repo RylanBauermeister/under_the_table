@@ -23,7 +23,7 @@
 
  html {
    height: 100%;
-   background-image: linear-gradient(to top right, teal, yellow);
+   background-image: linear-gradient(to right, teal, yellow);
  }
  body {
    background-color: transparent;
@@ -75,6 +75,31 @@
  nav.main-navbar {
    width: 100%;
    position: fixed;
+ }
+
+ div.button {
+   display: inline-block;
+   padding: 15px;
+   margin: 10px 0 10px 0;
+   border-radius: 10px;
+   background: #4aa6fc;
+   transition: 1s;
+ }
+
+ div.button > a {
+   transition: 1s;
+   color: black;
+ }
+
+ div.button:hover {
+   transition: 1s;
+   background: #004d66;
+ }
+
+ div.button:hover > a {
+    transition: 1s;
+    text-decoration: none;
+    color: white;
  }
 
  .dn-title {

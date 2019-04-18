@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
 .speech-bubble {
 	position: relative;
@@ -44,19 +44,15 @@ img.profile-right {
   margin-right: 50px;
 }
 
-div.reply-button {
-  display: inline-block;
-  padding: 15px;
-  margin: 10px 0 10px 0;
-  border-radius: 35%;
-  background: #4aa6fc;
-}
-
 div.reply-container {
   align-items: center;
 }
 
 .message-thread-header {
+  text-align: center;
+}
+
+.centered {
   text-align: center;
 }
 
@@ -88,4 +84,24 @@ div.reply-container {
   border-bottom: 0;
   margin-top: -15.5px;
   margin-right: -31px;
+}
+
+/* INDEX PAGE */
+
+.header {
+  margin-top: 10px;
+  display: inline-block;
+  font-family: 'Monoton', sans-serif;
+  border: 3px solid black;
+  padding: 5px;
+  border-radius: 0 10px;
+}
+
+span.number-bubble {
+  display: inline-block;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  background: red;
+  border-radius: 50%;
 }

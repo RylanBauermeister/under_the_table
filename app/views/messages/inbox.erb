@@ -1,7 +1,14 @@
-<%= link_to "Send A New Message", new_message_path%>
-<h2>Inbox</h2>
-<ul>
+<div class="centered">
+  <h2 class="header">My Conversations</h2><br>
+  <div class="button"><%= link_to "Send A New Message", new_message_path%></div>
+</div>
+<div class="messages_container">
   <% @users_corresponded_with.each do |user| %>
-    <li> <span class="number-bubble"><%=current_user.message_notifications_with(user).count%></span> <%= link_to user.username, "/messages/#{user.id}" %> </li>
+    <div class="">
+      <%= link_to user.username, "/messages/#{user.id}" %>
+      <% if current_user.message_notifications_with(user).count > 0 %>
+        <span class="number-bubble"><%=current_user.message_notifications_with(user).count%></span>
+      <% end %>
+    </div>
   <% end %>
-</ul>
+</div>
