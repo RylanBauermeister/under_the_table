@@ -56,7 +56,12 @@ class User < ApplicationRecord
   end
 
   def message_notifications_with(user)
-    message_notifications.where(receiver: self, sender: user)
+    messages = message_notifications.map do |notification|
+      notification.content
+    end
+    messages.select {|message|
+      message.receiver == self && message.sender == user
+    }
   end
 
   def message_notifications

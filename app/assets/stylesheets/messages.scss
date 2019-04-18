@@ -2,23 +2,90 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 .speech-bubble {
 	position: relative;
+  width: 50%;
 	background: #00aabb;
-	border-radius: .4em;
+  padding: 10px;
+	border-radius: .5em;
+  margin: 10px 45px 10px 45px;
 }
 
-.speech-bubble:after {
-	content: '';
+.speech-bubble-right {
+  float: right;
+}
+.speech-bubble-left {
+  float: left;
+  background: #4872bb;
+}
+
+img.thread-profile {
+  border: 1px solid blue;
+  clear: both;
+  border-radius: 50%;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+img.profile-left {
+  position: relative;
+  top: 40px;
+  float: left;
+  margin-left: 50px;
+}
+
+img.profile-right {
+  position: relative;
+  top: 40px;
+  float: right;
+  margin-right: 50px;
+}
+
+div.reply-button {
+  display: inline-block;
+  padding: 15px;
+  margin: 10px 0 10px 0;
+  border-radius: 35%;
+  background: #4aa6fc;
+}
+
+div.reply-container {
+  align-items: center;
+}
+
+.message-thread-header {
+  text-align: center;
+}
+
+.speech-bubble-left:after {
+  content: '';
 	position: absolute;
-	bottom: 0;
-	left: 50%;
+	left: 0;
+	top: 45px;
 	width: 0;
 	height: 0;
 	border: 31px solid transparent;
-	border-top-color: #00aabb;
-	border-bottom: 0;
+	border-right-color: #4872bb;
 	border-left: 0;
-	margin-left: -15.5px;
-	margin-bottom: -31px;
+	border-bottom: 0;
+	margin-top: -15.5px;
+	margin-left: -31px;
+}
+
+.speech-bubble-right:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 0;
+  height: 0;
+  border: 31px solid transparent;
+  border-left-color: #00aabb;
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -15.5px;
+  margin-right: -31px;
 }
