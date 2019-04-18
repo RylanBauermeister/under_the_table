@@ -21,16 +21,35 @@
 
  html {
    height: 100%;
-   background-image: linear-gradient(to top right, black, white);
+   background-image: linear-gradient(to top right, teal, yellow);
  }
  body {
    background-color: transparent;
  }
 
+// a {
+//   transition: 10s;
+// }
+//
+// a:hover {
+//   transition: 1s ease-in;
+//   box-shadow: 0px 0px 0px 8vw red,
+//               0px 0px 0px 16vw orange,
+//               0px 0px 0px 24vw yellow,
+//               0px 0px 0px 32vw green,
+//               0px 0px 0px 40vw blue,
+//               0px 0px 0px 48vw violet,
+//               0px 0px 0px 56vw indigo;
+// }
 
  li.spaced-nav {
    position: relative;
    margin-left: 12px;
+ }
+
+ li.rightmost {
+   margin-left: 15px;
+   margin-right: 20px;
  }
 
  span.number_bubble {

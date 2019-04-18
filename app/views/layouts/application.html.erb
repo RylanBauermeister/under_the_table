@@ -50,6 +50,18 @@
                   <%= fa_icon "bullhorn"%>
                 </a>
               </li>
+              <li class= "rightmost">
+                <div class="dropdown show">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%=fa_icon "user-circle"%>
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="<%=user_path(current_user)%>">My Profile</a>
+                    <a class="dropdown-item" href="<%=edit_user_path(current_user)%>">Edit My Profile</a>
+                  </div>
+                </div>
+              </li>
               <% end %>
             </ul>
           </div>

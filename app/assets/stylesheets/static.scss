@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 /*************** FRONT PAGE STYLES ***************/
 div.front-index {
@@ -15,29 +16,31 @@ div.front-index {
 a.front-link {
   position: relative;
   text-decoration: none;
-  line-height: 100px;
+  line-height: 200px;
+  font-size: 3em;
+  font-family: 'Quicksand', sans-serif;
   color: white;
 }
 
 div.front-ring {
   position:absolute;
-  top: 47%;
-  left: 47%;
-  width: 100px;
-  height: 100px;
+  top: 41%;
+  left: 42%;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
+  transition: 3s;
 }
 
 div.front-ring:hover {
-  transition: 1s;
-  box-shadow: 0px 0px 5px 10px white,
-              0px 0px 5px 20px red,
-              0px 0px 5px 30px orange,
-              0px 0px 5px 40px yellow,
-              0px 0px 5px 50px green,
-              0px 0px 5px 60px blue,
-              0px 0px 5px 70px violet,
-              0px 0px 5px 80px indigo;
+  transition: 5s ease-in;
+  box-shadow: 0px 0px 0px 8vw red,
+              0px 0px 0px 16vw orange,
+              0px 0px 0px 24vw yellow,
+              0px 0px 0px 32vw green,
+              0px 0px 0px 40vw blue,
+              0px 0px 0px 48vw violet,
+              0px 0px 0px 56vw indigo;
 }
 
 

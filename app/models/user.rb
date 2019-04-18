@@ -55,6 +55,10 @@ class User < ApplicationRecord
     clear_notifications(donation_notifications)
   end
 
+  def message_notifications_with(user)
+    message_notifications.where(receiver: self, sender: user)
+  end
+
   def message_notifications
     notifications.where(active: true, content_type: "Message")
   end
