@@ -3,13 +3,19 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @other_users = User.all_not(current_user)
+    if flash[:receiver_id]
+      @receiver_id = flash[:receiver_id]
+    else
+      @receiver_id = 1
+    end
   end
 
   def create
+    user = current_user
     @message = current_user.new_message(message_params)
     if @message.save
       current_user.create_notification(@message.receiver, @message)
-      redirect_to users_messages_path(current_user)
+      redirect_to message_path(user)
     else
       render :new
     end
@@ -30,7 +36,6 @@ class MessagesController < ApplicationController
     messages << Message.all.select {|m| m.sender == @receiver && m.receiver == @user}
     messages.flatten!
     @messages_sorted = messages.sort_by {|m| m.created_at}.reverse
-
     current_user.clear_message_notifications(@receiver)
   end
 
