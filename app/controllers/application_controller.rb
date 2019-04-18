@@ -13,4 +13,13 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find(session[:user_id])
   end
+
+  def set_flash_user
+
+    if flash[:receiver_id]
+      @receiver_id = flash[:receiver_id]
+    else
+      @receiver_id = 1
+    end
+  end
 end

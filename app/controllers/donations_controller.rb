@@ -1,6 +1,7 @@
 class DonationsController < ApplicationController
 
   before_action :redirect_if_not_login
+  before_action :set_flash_user, only: [:new]
 
   def new
     @donation = Donation.new
