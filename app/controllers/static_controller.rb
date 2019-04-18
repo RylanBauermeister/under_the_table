@@ -3,6 +3,11 @@ class StaticController < ApplicationController
   def login
   end
 
+  def logout
+    session.delete :user_id
+    redirect_to '/'
+  end
+
   def attempt_login
     @user = User.find_by(username: params[:username]).authenticate(params[:password])
     if @user

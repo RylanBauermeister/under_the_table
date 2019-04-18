@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @reviews = @user.reviews
     if is_own_page
       @notifications = current_user.active_notifications
+      current_user.clear_review_notifications
     end
   end
 
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     redirect_to user_path(@user)
   end
-
+  
   private
 
   def set_user

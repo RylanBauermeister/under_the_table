@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get '/messages/inbox', to: 'messages#inbox', as: "inbox"
   get '/messages/:receiver_id', to: 'messages#message_thread', as: "message_thread"
 
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   get '/', to: 'static#index'
   get '/login', to: 'static#login'
+  get '/logout', to: 'static#logout'
 
 
   post '/login', to: 'static#attempt_login'
