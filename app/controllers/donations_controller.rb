@@ -13,11 +13,7 @@ class DonationsController < ApplicationController
     @donations_received = current_user.donations_received
 
     #Clear donation notifications
-    current_user.notifications.each {|notification|
-      if notification.content_type == "Donation"
-        notification.update(active: false)
-      end
-    }
+    current_user.clear_donation_notifications
   end
 
   def create

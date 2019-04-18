@@ -1,3 +1,5 @@
+
+<%= link_to "Make A New Donation", new_donation_path%>
 <h3>Charitable Donations Made</h3>
 <ul>
   <% @donations_made.each do |donation|%>
@@ -14,7 +16,7 @@
 <ul>
   <% @donations_received.each do |donation|%>
     <li>
-      <%= link_to donation.sender.username, user_path(donation.sender)%><%=" donated $#{donation.amount}"%> 
+      <%= link_to donation.sender.username, user_path(donation.sender)%><%=" donated $#{donation.amount}"%>
       <div>
         <%= donation.content %>
       </div>

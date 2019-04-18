@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.front_index {
+
+/*************** FRONT PAGE STYLES ***************/
+div.front-index {
   background-color: black;
   text-align: center;
   justify-content: center;
@@ -10,10 +12,63 @@ div.front_index {
   width: 100vw;
 }
 
-a.front_link {
-  position:absolute;
-  top: 50%;
-  left: 50%;
+a.front-link {
+  position: relative;
   text-decoration: none;
+  line-height: 100px;
   color: white;
+}
+
+div.front-ring {
+  position:absolute;
+  top: 47%;
+  left: 47%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+div.front-ring:hover {
+  transition: 1s;
+  box-shadow: 0px 0px 5px 10px white,
+              0px 0px 5px 20px red,
+              0px 0px 5px 30px orange,
+              0px 0px 5px 40px yellow,
+              0px 0px 5px 50px green,
+              0px 0px 5px 60px blue,
+              0px 0px 5px 70px violet,
+              0px 0px 5px 80px indigo;
+}
+
+
+/*************** LOGIN STYLES ***************/
+div.login_form {
+  text-align: center;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 25%;
+}
+
+div.login-form-items {
+  padding: 20px;
+}
+
+div.new-account-text {
+  margin-top: 20px;
+}
+
+span.new-account-link {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  transition: .25s;
+}
+
+span.new-account-link:hover {
+  background-color: green;
+  transition: .25s;
+}
+
+span.new-account-link > a {
+  color: black;
 }

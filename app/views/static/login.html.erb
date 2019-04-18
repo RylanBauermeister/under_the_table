@@ -1,12 +1,19 @@
-<%= form_with url:login_path do |f| %>
-  <div>
-    <%= f.label "Username" %>
-    <%= f.text_field :username %>
-  </div>
-  <div>
-    <%= f.label "Password" %>
-    <%= f.text_field :password %>
-  </div>
-  <%= f.submit %>
+<div class="login_form">
+  <%= form_with url:login_path do |f| %>
+    <div class="login-form-items">
+      <%= f.label "Username" %>
+      <%= f.text_field :username %>
 
-<% end %>
+      <%= f.label "Password" %>
+      <%= f.password_field :password %>
+    </div>
+    <%= f.submit "Log In"%>
+  <% end %>
+
+
+
+  <div class="new-account-text">
+    New to the site?  <span class="new-account-link"><%= link_to "Make a new account!", new_user_path %></span>
+  </div>
+
+</div>

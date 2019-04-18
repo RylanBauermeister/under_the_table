@@ -33,20 +33,38 @@ class User < ApplicationRecord
     notifications.where(active: true)
   end
 
+  def clear_notifications(n)
+    n.each do |notification|
+      notification.update(active: false)
+    end
+  end
+
   def clear_message_notifications(user)
-    @thread_notifications = active_notifications.each {|notification|
-      if notification.content_type == "Message" && notification.content.receiver == self && notification.content.sender == user
+    message_notifications.each {|notification|
+      if notification.content.receiver == self && notification.content.sender == user
         notification.update(active: false)
       end
     }
   end
 
   def clear_review_notifications
-    active_notifications.each {|notification|
-      if notification.content_type == "Review"
-        notification.update(active: false)
-      end
-    }
+    clear_notifications(review_notifications)
+  end
+
+  def clear_donation_notifications
+    clear_notifications(donation_notifications)
+  end
+
+  def message_notifications
+    notifications.where(active: true, content_type: "Message")
+  end
+
+  def donation_notifications
+    notifications.where(active: true, content_type: "Donation")
+  end
+
+  def review_notifications
+    notifications.where(active: true, content_type: "Review")
   end
 
   def self.all_not(user)

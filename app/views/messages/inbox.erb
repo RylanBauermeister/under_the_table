@@ -1,5 +1,5 @@
+<%= link_to "Send A New Message", new_message_path%>
 <h2>Inbox</h2>
-
 <ul>
   <% @users_corresponded_with.each do |user| %>
     <li> <%= link_to user.username, "/messages/#{user.id}" %> </li>
