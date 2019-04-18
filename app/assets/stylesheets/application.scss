@@ -19,6 +19,8 @@
 
  @import "bootstrap";
 
+ @import url('https://fonts.googleapis.com/css?family=Monoton|Quattrocento+Sans|Raleway');
+
  html {
    height: 100%;
    background-image: linear-gradient(to top right, teal, yellow);
@@ -73,4 +75,9 @@
  nav.main-navbar {
    width: 100%;
    position: fixed;
+ }
+
+ .dn-title {
+   font-family: 'Monoton', sans-serif;
+   font-size: 24px;
  }
