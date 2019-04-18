@@ -1,14 +1,16 @@
-<h3> <%= link_to @receiver.username, user_path(@receiver) %> </h3>
 <% flash[:receiver_id] = @receiver.id %>
-<%= link_to "Reply", new_message_path %>
-<ol>
+<h3 class="message-thread-header"> My Conversation With <%= link_to @receiver.username, user_path(@receiver) %>
+<div class="reply-container">
+  <div class="reply-button">
+    <%= link_to "Reply", new_message_path %>
+  </div>
+</h3>
+</div>
+
   <% @messages_sorted.each do |message| %>
-      <% if message.sender == @user %>
-        <% symbol = "-->" %>
-      <% else %>
-        <% symbol = "<--" %>
-      <% end %>
-      <li> <b> <%= symbol %> <%= message.title %></b> - <%= message.created_at.strftime("%e %b %Y, %l:%M %p") %><br>
-      <p> <%= message.content %> </p> </li>
+
+      <img class='thread-profile <%= "profile-#{message.sender == current_user ? 'left' : 'right'}"%>' src="<%=message.sender.profile_picture_url%>" alt="<%=message.sender.username%>'s picture'">
+      <span class="speech-bubble <%= message.sender == current_user ? 'speech-bubble-left' : 'speech-bubble-right'%>">
+        <b><%= message.sender.username %></b> - <%= message.created_at.strftime("%e %b %Y, %l:%M %p") %><br>
+      <p> <%= message.content %> </p> </span>
   <% end %>
-</ol>
