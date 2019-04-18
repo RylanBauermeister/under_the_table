@@ -10,9 +10,23 @@
   </div>
   <% end %>
 </div>
+
 <h2><%=@user.username%></h2>
-<%= link_to "Edit", edit_user_path(@user) if @is_own_page%> <%= link_to("Review This User", new_review_path) if !@is_own_page%>
-<%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete%>
+
+<%= link_to "Edit", edit_user_path(@user) if @is_own_page%>
+
+<% if !@is_own_page %>
+  <% flash[:receiver_id] = @user.id %>
+  <%= link_to("Review This User", new_review_path) %>
+<% end %><br>
+
+<% if !@is_own_page %>
+  <% flash[:receiver_id] = @user.id %>
+  <%= link_to("Donate To This User", new_donation_path) %>
+<% end %>
+
+<%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete if @is_own_page%>
+
 <div>
   <%= "#{@user.profession} in #{@user.location}"%>
 </div>

@@ -1,13 +1,9 @@
 class MessagesController < ApplicationController
+  before_action :set_flash_user, only: [:new]
 
   def new
     @message = Message.new
     @other_users = User.all_not(current_user)
-    if flash[:receiver_id]
-      @receiver_id = flash[:receiver_id]
-    else
-      @receiver_id = 1
-    end
   end
 
   def create
@@ -15,7 +11,7 @@ class MessagesController < ApplicationController
     @message = current_user.new_message(message_params)
     if @message.save
       current_user.create_notification(@message.receiver, @message)
-      redirect_to message_path(user)
+      redirect_to message_thread_path(@message.receiver)
     else
       render :new
     end
