@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_flash_user
-
     if flash[:receiver_id]
       @receiver_id = flash[:receiver_id]
     else
