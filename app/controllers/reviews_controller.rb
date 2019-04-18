@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :set_flash_user, only: [:new]
 
   def new
     @review = Review.new
