@@ -1,37 +1,40 @@
-<img src="<%=@user.profile_picture_url%>" alt="">
+<div class="top-profile-page">
+  <h1 class="user-show-header user-username-header"><%=@user.username%></h1>
 
-<h2><%=@user.username%></h2>
+  <img class="profile-pic" src="<%=@user.profile_picture_url%>" alt=""><br>
 
-<% if !@is_own_page %>
-  <% flash[:receiver_id] = @user.id %>
-  <%= link_to("Review This User", new_review_path) %>
-<% end %><br>
+  <h4 class="user-show-header"> <%= "#{@user.profession} in #{@user.location}"%> </h4>
 
-<% if !@is_own_page %>
-  <% flash[:receiver_id] = @user.id %>
-  <%= link_to("Donate To This User", new_donation_path) %>
-<% end %>
+  <% if !@is_own_page %>
+    <% flash[:receiver_id] = @user.id %>
+    <p class="user-show-header"><%= link_to("Review This User", new_review_path) %><br>
+  <% end %>
 
-<%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete if @is_own_page%>
-
-<div>
-  <%= "#{@user.profession} in #{@user.location}"%>
+  <% if !@is_own_page %>
+    <% flash[:receiver_id] = @user.id %>
+    <%= link_to("Donate To This User", new_donation_path) %></p>
+  <% end %>
+  <hr>
 </div>
-<h3>Reviews</h3>
-<div class="reviews_div">
-  <% if !@reviews.empty? %>
-    <% @reviews.each do |review| %>
-      <div class="review">
-        <h4> <%= review.writer.username %> says...</h4>
-        <%= review.content %> <br>
-        <p>Posted at <%= review.created_at%></p>
+
+<div class="reviews-profile-page">
+  <h3 class="user-show-header">Reviews</h3>
+  <div class="reviews_div">
+    <% if !@reviews.empty? %>
+      <% @reviews.each do |review| %>
+        <div class="review-left">
+          <h4> <%= review.writer.username %> says...</h4>
+          <%= review.content %> <br>
+          <p>Posted at <%= review.created_at%></p>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="no-reviews">
+        No reviews yet!  Check back later.
       </div>
     <% end %>
-  <% else %>
-    <div class="no_reviews">
-      No reviews yet!  Check back later.
-    </div>
-  <% end %>
+  </div>
+  <%= link_to "Back", users_path %>
+  <%= link_to "Become This User", user_morph_path(@user) %>
+  <%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete if @is_own_page%>
 </div>
-<%= link_to "Back", users_path %>
-<%= link_to "Become This User", user_morph_path(@user) %>
