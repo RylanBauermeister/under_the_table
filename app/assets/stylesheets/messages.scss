@@ -52,10 +52,6 @@ div.reply-container {
   text-align: center;
 }
 
-.centered {
-  text-align: center;
-}
-
 .speech-bubble-left:after {
   content: '';
 	position: absolute;
@@ -88,18 +84,37 @@ div.reply-container {
 
 /* INDEX PAGE */
 
-.header {
-  margin-top: 10px;
+div.message-specific {
+  margin: 5%;
+  border: 3px solid white;
   display: inline-block;
+  width: 22%;
+  height: 175px;
+  // background-image: linear-gradient(to left, teal, yellow);
+  background: black;
+  border-radius: 10px 0;
+  text-align: center;
+}
+
+div.little-bubble {
+  height: 100px;
+  width: 70%;
+}
+
+div.message-sender {
+    display: inline-block;
+}
+
+div.message-sender {
   font-family: 'Monoton', sans-serif;
-  border: 3px solid black;
-  padding: 5px;
-  border-radius: 0 10px;
+  font-size: 24px;
+  color: white;
 }
 
 span.number-bubble {
   display: inline-block;
   text-align: center;
+  margin-left: 5px;
   width: 25px;
   height: 25px;
   background: red;

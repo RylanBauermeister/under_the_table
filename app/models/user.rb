@@ -80,4 +80,12 @@ class User < ApplicationRecord
     User.where.not(id: user.id)
   end
 
+  def chronological_messages(user)
+    messages.select{|m| m.sender == user || m.receiver == user}.sort_by {|m| m.created_at}.reverse
+  end
+
+  def messages
+    messages_sent + messages_received;
+  end
+
 end
