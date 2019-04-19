@@ -7,25 +7,31 @@
 
   <% if !@is_own_page %>
     <% flash[:receiver_id] = @user.id %>
-    <p class="user-show-header"><%= link_to("Review This User", new_review_path) %><br>
+    <div class="button-smaller"><%= link_to("Review This User", new_review_path) %></div><br>
+
+    <div class="button-smaller"><%= link_to("Donate To This User", new_donation_path) %></div><br>
+
+    <div class="button-smaller"><%= link_to "Become This User", user_morph_path(@user) %></div>
   <% end %>
 
-  <% if !@is_own_page %>
-    <% flash[:receiver_id] = @user.id %>
-    <%= link_to("Donate To This User", new_donation_path) %></p>
+
+
+  <% if @is_own_page %>
+    <p style="text-align: center"><%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete%></p>
   <% end %>
   <hr>
 </div>
+
 
 <div class="reviews-profile-page">
   <h3 class="user-show-header">Reviews</h3>
   <div class="reviews_div">
     <% if !@reviews.empty? %>
       <% @reviews.each do |review| %>
-        <div class="review-left">
+        <div class="review-show">
           <h4> <%= review.writer.username %> says...</h4>
           <%= review.content %> <br>
-          <p>Posted at <%= review.created_at%></p>
+          <p>Posted at <%= review.created_at.strftime("%e %b %Y, %l:%M %p")%></p>
         </div>
       <% end %>
     <% else %>
@@ -34,7 +40,4 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "Back", users_path %>
-  <%= link_to "Become This User", user_morph_path(@user) %>
-  <%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete if @is_own_page%>
 </div>

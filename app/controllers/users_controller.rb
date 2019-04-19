@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @reviews = @user.reviews
+    @reviews = @user.reviews.sort_by {|review| review.created_at}.reverse
     if is_own_page
       @notifications = current_user.active_notifications
       current_user.clear_review_notifications
