@@ -94,7 +94,7 @@
 
  }
 
- div.button {
+ .button {
    display: inline-block;
    padding: 15px;
    margin: 10px 0 10px 0;
@@ -103,17 +103,17 @@
    transition: 1s;
  }
 
- div.button > a {
+ .button > a {
    transition: 1s;
    color: black;
  }
 
- div.button:hover {
+ .button:hover {
    transition: 1s;
    background: #004d66;
  }
 
- div.button:hover > a {
+ .button:hover > a {
     transition: 1s;
     text-decoration: none;
     color: white;

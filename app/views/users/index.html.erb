@@ -2,6 +2,11 @@
   <h2 class="header">Users</h2>
 </div>
 <div class="index-block">
+  <% if @users.empty? %>
+  <div class="alert">
+    "No users here!"
+  </div>
+  <% end %>
   <% @users.each do |user| %>
   <div class="index-item">
     <img class="index-pic" src="<%=user.profile_picture_url%>" alt="">
