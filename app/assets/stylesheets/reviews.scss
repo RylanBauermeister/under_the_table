@@ -1,3 +1,15 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.review-submit {
+  text-align: center;
+}
+
+form.new_review {
+  display:inline-block;
+  text-align: left;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 3%;
+}

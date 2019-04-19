@@ -1,20 +1,26 @@
-<h2>Make A Review</h2>
 
-<%= form_for @review do |f| %>
+<div class="centered">
+  <h3 class="header">Make A Review</h3><br>
 
-  <div>
-    <%= f.label "User:" %> <br>
-    <%= f.collection_select :user_id, @users, :id, :username, {:selected => @receiver_id}%>
-  </div>
-  <div>
-    <%= f.label "Rating:" %>
-    <%= f.number_field :rating, max: 5, min: 0%>
-  </div>
-  <div>
-    <%= f.label "Comment:" %> <br>
-    <%= f.text_area :content%>
-  </div>
+  <%= form_for @review do |f| %>
 
-  <%= f.submit "Create Review"%>
+    <div>
+      <%= f.label "User:" %>
+      <%= f.collection_select :user_id, @users, :id, :username, {:selected => @receiver_id}%>
+    </div>
+    <div>
+      <%= f.label "Rating:" %>
+      <%= f.number_field :rating, max: 5, min: 0%>
+    </div>
+    <div>
+      <%= f.label "Comment:" %>
+      <%= f.text_area :content%>
+    </div>
 
-<% end %>
+    <div class="review-submit">
+      <%= f.submit "Create Review"%>
+    </div>
+
+
+  <% end %>
+</div>

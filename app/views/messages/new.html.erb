@@ -1,19 +1,24 @@
-<h2>New Message</h2>
+<div class="centered">
+  <h3 class="header">New &nbsp&nbsp&nbspMessage</h3><br>
 
-<%= form_for @message do |f| %>
-  <div>
-    <%= f.label "Send Message To" %> <br>
-    <%= f.collection_select(:receiver_id, @other_users, :id, :username, {:selected => @receiver_id}) %>
+  <%= form_for @message do |f| %>
+    <div>
+      <%= f.label "Send Message To" %>
+      <%= f.collection_select(:receiver_id, @other_users, :id, :username, {:selected => @receiver_id}) %>
 
-  </div>
-  <div>
-    <%= f.label "Title" %> <br>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label "Message" %> <br>
-    <%= f.text_area :content %>
-  </div>
+    </div>
+    <div>
+      <%= f.label "Title" %>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <%= f.label "Message" %>
+      <%= f.text_area :content, size: "40x5" %>
+    </div>
 
-  <%= f.submit%>
-<% end %>
+    <div class="message-submit">
+      <%= f.submit%>
+    </div>
+
+  <% end %>
+</div>

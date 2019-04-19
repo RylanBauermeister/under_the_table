@@ -124,3 +124,16 @@ span.number-bubble {
   background: red;
   border-radius: 50%;
 }
+
+/* FORM PAGE */
+div.message-submit {
+  text-align: center;
+}
+
+form.new_message {
+  display:inline-block;
+  text-align: left;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 3%;
+}

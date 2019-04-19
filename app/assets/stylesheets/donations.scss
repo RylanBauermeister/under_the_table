@@ -1,3 +1,39 @@
 // Place all the styles related to the donations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+  width: 75%;
+}
+td, th {
+  border: 1px solid black;
+  font-size: 1.125em;
+  padding: 3px;
+  width: 25%;
+}
+
+td {
+  background-color: grey;
+  color: white;
+}
+
+th {
+  background-color: white;
+}
+
+td > a {
+  color: white;
+  text-decoration: underline;
+}
+
+div.donation-submit {
+  text-align: center;
+}
+
+form.new_donation {
+  display:inline-block;
+  text-align: left;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 3%;
+}
