@@ -41,8 +41,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    reset_session
+    if current_user == @user
+      @user.destroy
+      session.delete :user_id
+    end
     redirect_to users_path
   end
 
