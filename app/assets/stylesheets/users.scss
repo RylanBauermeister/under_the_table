@@ -56,17 +56,32 @@ img.profile-pic {
   margin-right: auto;
 }
 
+img.index-pic {
+  border: 1px solid blue;
+  clear: both;
+  border-radius: 50%;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+}
+
 div.index-block {
-  margin-left: 20px
+  margin-left: 10px
 }
 
 div.index-item {
-  display: table;
+  display: inline-block;
   padding: 15px;
   margin: 10px 0 10px 0;
   border-radius: 20px;
-  width: 33%;
+  width: 49%;
   background: #4aa6fc;
+}
+
+div.index-item-text {
+  display: inline-block;
+  width: 80%;
+  vertical-align: middle;
 }
 
 div.user-form {

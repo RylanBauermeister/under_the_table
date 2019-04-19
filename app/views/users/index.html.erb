@@ -4,13 +4,16 @@
 <div class="index-block">
   <% @users.each do |user| %>
   <div class="index-item">
-    <h3><%= link_to user.username, user_path(user)%></h3>
-    <span style="float: left">
-      <%= "#{user.profession} in #{user.location}"%>
-    </span>
-    <span style="float: right">
-      <%=user.average_review_score%>
-    </span>
+    <img class="index-pic" src="<%=user.profile_picture_url%>" alt="">
+    <div class="index-item-text">
+      <h3 class="header"><%= link_to user.username, user_path(user)%></h3><br>
+      <span style="margin: 10px">
+        <%= "#{user.profession} in #{user.location}"%>
+      </span>
+      <span style="float: right">
+        <%=user.average_review_score%>
+      </span>
+    </div>
   </div>
   <% end %>
 </div>
