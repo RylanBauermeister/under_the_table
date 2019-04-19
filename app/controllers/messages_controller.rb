@@ -18,8 +18,8 @@ class MessagesController < ApplicationController
   end
 
   def inbox
-    @user = current_user
     other_users = User.all_not(current_user)
+    @user = current_user
     @users_corresponded_with = @user.messages_sent.collect {|m| other_users.find(m.receiver_id)}
     @users_corresponded_with << @user.messages_received.collect {|m| other_users.find(m.sender_id)}
     @users_corresponded_with.flatten!.uniq!

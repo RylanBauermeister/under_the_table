@@ -9,8 +9,12 @@ class StaticController < ApplicationController
   end
 
   def attempt_login
-    @user = User.find_by(username: params[:username]).authenticate(params[:password])
-    if @user
+    @user = User.find_by(username: params[:username])
+
+    if @user.nil?
+      flash[:message] = "Invalid login.  Please try again."
+      redirect_to login_path
+    elsif @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
