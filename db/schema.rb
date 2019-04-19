@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_224124) do
+ActiveRecord::Schema.define(version: 2019_04_19_181256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_224124) do
     t.string "username"
     t.string "profession"
     t.string "location"
-    t.integer "balance"
+    t.integer "balance", default: 1000
     t.string "profile_picture_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

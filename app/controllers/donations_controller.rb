@@ -18,11 +18,20 @@ class DonationsController < ApplicationController
 
   def create
     @donation = current_user.new_donation(donation_params)
+    @receiver = @donation.receiver
     if @donation.save
+      #HOTFIX FOR LEGACY USERS
+      current_user.update(balance: 1000) if current_user.balance == nil;
+      @receiver.update(balance: 1000) if @receiver.balance == nil;
+
       current_user.create_notification(@donation.receiver, @donation)
+      current_user.update(balance: current_user.balance - @donation.amount)
+
+      @receiver.update(balance: @receiver.balance + @donation.amount)
       redirect_to donations_path
     else
-      render :new
+      flash[:error_messages] = @donation.errors.full_messages
+      redirect_to new_donation_path
     end
   end
 

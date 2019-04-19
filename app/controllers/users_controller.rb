@@ -5,7 +5,15 @@ class UsersController < ApplicationController
   before_action :is_own_page, only: [:show]
 
   def index
-    @users = User.all
+    if params[:search]
+      search = params[:search].downcase
+      @users = User.all.select{|user|
+        user.username.downcase.include?(search) || user.profession.downcase.include?(search)
+      }
+    else
+      @users = User.all
+    end
+
   end
 
   def show

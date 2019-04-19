@@ -5,11 +5,6 @@
     <div>
       <%= f.label "Send Message To" %>
       <%= f.collection_select(:receiver_id, @other_users, :id, :username, {:selected => @receiver_id}) %>
-
-    </div>
-    <div>
-      <%= f.label "Title" %>
-      <%= f.text_field :title %>
     </div>
     <div>
       <%= f.label "Message" %>
