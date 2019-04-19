@@ -85,10 +85,15 @@ class User < ApplicationRecord
   end
 
   def average_review_score
-    reviews.collect(0) {|acc, review|
-      acc += review.rating
-    }
-    acc /= reviews.count
+    if reviews.count == 0
+      "No reviews yet!"
+    else
+      sum = reviews.inject(0) {|acc, review|
+        acc + review.rating
+      }
+      sum = sum.to_f
+      "#{(sum /= reviews.count).round(1)}/5 Stars"
+    end
   end
 
   def messages
