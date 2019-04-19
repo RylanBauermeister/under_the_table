@@ -1,25 +1,44 @@
 
-<%= link_to "Make A New Donation", new_donation_path%>
-<h3>Charitable Donations Made</h3>
-<ul>
-  <% @donations_made.each do |donation|%>
-    <li>
-      <%="Donated $#{donation.amount} to "%> <%= link_to donation.receiver.username, user_path(donation.receiver)%>
-      <div>
-        <%= donation.content %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<div class="button centered">
+  <%= link_to "Make A New Donation", new_donation_path%>
+</div> <br>
 
-<h3>Charitable Donations Received</h3>
-<ul>
-  <% @donations_received.each do |donation|%>
-    <li>
-      <%= link_to donation.sender.username, user_path(donation.sender)%><%=" donated $#{donation.amount}"%>
-      <div>
+<h3 class="header">Charitable &nbsp&nbsp&nbspDonations &nbsp&nbsp&nbspMade</h3>
+<table>
+  <tr>
+    <th> Amount </th>
+    <th> Donated To </th>
+    <th> Message </th>
+    <th> Sent On </th>
+  </tr>
+  <% @donations_made.reverse.each do |donation|%>
+    <tr>
+      <td><%="$#{donation.amount}"%></td>
+      <td><%= link_to donation.receiver.username, user_path(donation.receiver)%></td>
+      <td>
         <%= donation.content %>
-      </div>
-    </li>
+      </td>
+      <td><%= donation.created_at.strftime("%B %e, %Y")%></td>
+    </tr>
   <% end %>
-</ul>
+</table>
+
+<h3 class="header">Charitable &nbsp&nbsp&nbspDonations &nbsp&nbsp&nbspReceived</h3>
+<table>
+  <tr>
+    <th> Amount </th>
+    <th> Donated By </th>
+    <th> Message </th>
+    <th> Received On </th>
+  </tr>
+  <% @donations_received.reverse.each do |donation|%>
+    <tr>
+      <td><%="$#{donation.amount}"%></td>
+      <td><%= link_to donation.sender.username, user_path(donation.sender)%></td>
+      <td>
+        <%= donation.content %>
+      </td>
+      <td><%= donation.created_at.strftime("%B %e, %Y")%></td>
+    </tr>
+  <% end %>
+</table>

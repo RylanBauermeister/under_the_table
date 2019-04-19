@@ -13,6 +13,7 @@
  *= require donations.scss
  *= require messages.scss
  *= require notifications.scss
+ *= require reviews.scss
  *= require users.scss
  *= require font-awesome
  */
@@ -119,6 +120,7 @@
  }
 
  .header {
+   background-color: white;
    margin-top: 10px;
    display: inline-block;
    font-family: 'Monoton', sans-serif;
