@@ -12,10 +12,6 @@ div.top-profile-page {
   font-size: 50px;
 }
 
-.user-show-header {
-  text-align: center;
-}
-
 div.reviews-profile-page {
   margin: 40px;
 }
@@ -29,8 +25,31 @@ div.review-show {
   background: #4aa6fc;
 }
 
-div.no-reviews {
+div.button-users {
+  display: inline-block;
+  padding: 5px;
+  margin: 10px 0 10px 0;
+  border-radius: 10px;
+  background: #4aa6fc;
+  transition: 1s;
+  width: 30%;
   text-align: center;
+}
+
+div.button-users > a {
+  transition: 1s;
+  color: black;
+}
+
+div.button-users:hover {
+  transition: 1s;
+  background: #004d66;
+}
+
+div.button-users:hover > a {
+   transition: 1s;
+   text-decoration: none;
+   color: white;
 }
 
 img.profile-pic {

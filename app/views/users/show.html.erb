@@ -1,41 +1,41 @@
 <div class="top-profile-page">
-  <h1 class="user-show-header user-username-header"><%=@user.username%></h1>
+  <h1 class="user-username-header centered"><%=@user.username%></h1>
 
   <img class="profile-pic" src="<%=@user.profile_picture_url%>" alt=""><br>
 
-  <h4 class="user-show-header"> <%= "#{@user.profession} in #{@user.location}"%> </h4>
+  <h4 class="centered"> <%= "#{@user.profession} in #{@user.location}"%> </h4>
 
   <% if !@is_own_page %>
     <% flash[:receiver_id] = @user.id %>
-    <div class="button-smaller"><%= link_to("Review This User", new_review_path) %></div><br>
-
-    <div class="button-smaller"><%= link_to("Donate To This User", new_donation_path) %></div><br>
-
-    <div class="button-smaller"><%= link_to "Become This User", user_morph_path(@user) %></div>
-  <% end %>
-
-
-
-  <% if @is_own_page %>
+    <div class="button-users">
+      <%= link_to "Review This User", new_review_path %>
+    </div>
+    <div class="button-users">
+      <%= link_to "Donate To This User", new_donation_path %>
+    </div>
+    <div class="button-users">
+      <%= link_to "Become This User", user_morph_path(@user) %>
+    </div>
+  <% else %>
     <p style="text-align: center"><%= button_to "Delete", {controller: :users, action: 'destroy', id: @user.id }, method: :delete%></p>
   <% end %>
-  <hr>
 </div>
 
+<hr>
 
 <div class="reviews-profile-page">
-  <h3 class="user-show-header">Reviews</h3>
+  <h3 class="centered">Reviews</h3>
   <div class="reviews_div">
     <% if !@reviews.empty? %>
       <% @reviews.each do |review| %>
         <div class="review-show">
-          <h4> <%= review.writer.username %> says...</h4>
+          <h4> <%= review.writer.username %> says... <%= review.rating %>/5 Stars </h4>
           <%= review.content %> <br>
           <p>Posted at <%= review.created_at.strftime("%e %b %Y, %l:%M %p")%></p>
         </div>
       <% end %>
     <% else %>
-      <div class="no-reviews">
+      <div class="centered">
         No reviews yet!  Check back later.
       </div>
     <% end %>
