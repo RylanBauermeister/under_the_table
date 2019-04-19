@@ -1,29 +1,34 @@
-<%= form_for user do |f| %>
-  <div>
-    <%= f.label "User Name" %> <br>
-    <%= f.text_field :username %>
-  </div>
-  <div>
-    <%= f.label "Profession" %> <br>
-    <%= f.text_field :profession %>
-  </div>
-  <div>
-    <%= f.label "Location" %> <br>
-    <%= f.text_field :location %>
-  </div>
-  <div>
-    <%= f.label "Profile URL" %> <br>
-    <%= f.text_field :profile_picture_url %>
-  </div>
+<div class="user-form">
+  <%= form_for user do |f| %>
+    <div class="">
+      <%= f.label "User Name" %>
+      <%= f.text_field :username %>
+    </div>
+    <div class="">
+      <%= f.label "Profession" %>
+      <%= f.text_field :profession %>
+    </div>
+    <div class="">
+      <%= f.label "Location" %>
+      <%= f.text_field :location %>
+    </div>
+    <div class="">
+      <%= f.label "Profile URL" %>
+      <%= f.text_field :profile_picture_url %>
+    </div>
 
-  <div>
-    <%= f.label "Password" %> <br>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label "Confirm Password" %> <br>
-    <%= f.password_field :password_confirmation %>
-  </div>
+    <div class="">
 
-  <%= f.submit%>
-<% end %>
+    </div>
+    <div class="">
+      <%= f.label "Password" %>
+      <%= f.password_field :password %> <br>
+      <%= f.label "Confirm Password" %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="user-submit">
+      <%= f.submit%>
+    </div>
+
+  <% end %>
+</div>

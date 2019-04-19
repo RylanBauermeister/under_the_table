@@ -67,4 +67,21 @@ div.index-item {
   border-radius: 20px;
   width: 33%;
   background: #4aa6fc;
+
+div.user-form {
+  text-align: center;
+  text-align: center;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 3%;
+}
+
+label {
+  display: inline-block;
+  width: 160px;
+  margin: 10px 0;
+}
+
+div.user-submit {
+  margin-top: 20px;
 }
