@@ -3,8 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.top-profile-page {
-  width: 400px;
+  width: 600px;
   margin: auto;
+  text-align: center;
 }
 
 .user-username-header {
@@ -33,6 +34,16 @@ div.no-reviews {
   text-align: center;
 }
 
+.center {
+   width: 15%;
+   margin: 0 auto;
+}
+
+.centery {
+   width: 33%;
+   margin: 0 auto;
+}
+
 img.profile-pic {
   border: 1px solid blue;
   clear: both;
@@ -44,6 +55,18 @@ img.profile-pic {
   margin-left: auto;
   margin-right: auto;
 }
+
+div.index-block {
+  margin-left: 20px
+}
+
+div.index-item {
+  display: table;
+  padding: 15px;
+  margin: 10px 0 10px 0;
+  border-radius: 20px;
+  width: 33%;
+  background: #4aa6fc;
 
 div.user-form {
   text-align: center;
@@ -61,5 +84,4 @@ label {
 
 div.user-submit {
   margin-top: 20px;
-
 }

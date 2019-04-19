@@ -1,10 +1,13 @@
 <div class="centered">
   <h2 class="header">Users</h2>
 </div>
-
-<% @users.each do |user| %>
-<h3><%= link_to user.username, user_path(user)%></h3>
-<div>
-  <%= "#{user.profession} in #{user.location}"%>
+<div class="index-block">
+  <% @users.each do |user| %>
+  <div class="index-item">
+    <h3><%= link_to user.username, user_path(user)%></h3>
+    <div>
+      <%= "#{user.profession} in #{user.location}"%>
+    </div>
+  </div>
+  <% end %>
 </div>
-<% end %>
