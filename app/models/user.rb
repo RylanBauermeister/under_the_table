@@ -2,14 +2,14 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, confirmation: true
 
-  has_many :donations_made, :class_name => "Donation", :foreign_key => "sender_id"
-  has_many :donations_received, :class_name => "Donation", :foreign_key => "receiver_id"
+  has_many :donations_made, :class_name => "Donation", :foreign_key => "sender_id", dependent: :destroy
+  has_many :donations_received, :class_name => "Donation", :foreign_key => "receiver_id", dependent: :destroy
 
-  has_many :messages_sent, :class_name => "Message", :foreign_key => "sender_id"
-  has_many :messages_received, :class_name => "Message", :foreign_key => "receiver_id"
+  has_many :messages_sent, :class_name => "Message", :foreign_key => "sender_id", dependent: :destroy
+  has_many :messages_received, :class_name => "Message", :foreign_key => "receiver_id", dependent: :destroy
 
-  has_many :reviews_written, :class_name => "Review", :foreign_key => "writer_id"
-  has_many :reviews, :class_name => "Review", :foreign_key => "user_id"
+  has_many :reviews_written, :class_name => "Review", :foreign_key => "writer_id", dependent: :destroy
+  has_many :reviews, :class_name => "Review", :foreign_key => "user_id", dependent: :destroy
 
   has_many :notifications
 
@@ -60,7 +60,7 @@ class User < ApplicationRecord
       notification.content
     end
     messages.select {|message|
-      message.receiver == self && message.sender == user
+      !message.nil? && message.receiver == self && message.sender == user
     }
   end
 

@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   has_many :notifications, as: :content
 
 
-  def writer
-    writer ||= User.new(username: "[DELETED]")
-  end
+  # def writer
+  #   writer = User.new(username: "[DELETED]") if !writer
+  # end
 end
