@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   def clear_message_notifications(user)
     message_notifications.each {|notification|
-      if notification.content.receiver == self && notification.content.sender == user
+      if !notification.content.nil? && notification.content.receiver == self && notification.content.sender == user
         notification.update(active: false)
       end
     }
@@ -65,7 +65,8 @@ class User < ApplicationRecord
   end
 
   def message_notifications
-    notifications.where(active: true, content_type: "Message")
+    @n = notifications.where(active: true, content_type: "Message")
+    @n.select{|m| !m.nil? }
   end
 
   def donation_notifications

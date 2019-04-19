@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20190419180841_change_users_balance.rb

@@ -1,5 +1,15 @@
 <div class="centered">
   <h3 class="header">New &nbsp&nbsp&nbspDonation</h3><br>
+
+  <div class="errors">
+    <% if flash[:error_messages]%>
+      <% flash[:error_messages].each do |message| %>
+        <div class="alert errors">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= form_for @donation do |f|%>
     <div>
       <%= f.label "Send To"%>
