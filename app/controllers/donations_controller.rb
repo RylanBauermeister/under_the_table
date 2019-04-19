@@ -19,11 +19,10 @@ class DonationsController < ApplicationController
   def create
     @donation = current_user.new_donation(donation_params)
     @receiver = @donation.receiver
+    #HOTFIX FOR LEGACY USERS
+    current_user.update(balance: 1000) if current_user.balance == nil;
+    @receiver.update(balance: 1000) if @receiver.balance == nil;
     if @donation.save
-      #HOTFIX FOR LEGACY USERS
-      current_user.update(balance: 1000) if current_user.balance == nil;
-      @receiver.update(balance: 1000) if @receiver.balance == nil;
-
       current_user.create_notification(@donation.receiver, @donation)
       current_user.update(balance: current_user.balance - @donation.amount)
 
