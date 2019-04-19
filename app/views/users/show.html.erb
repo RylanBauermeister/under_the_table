@@ -27,9 +27,10 @@
     <% if !@reviews.empty? %>
       <% @reviews.each do |review| %>
         <div class="review-show">
-          <h4> <%= review.writer.username %> says...</h4>
-          <%= review.content %> <br>
-          <p>Posted at <%= review.created_at.strftime("%e %b %Y, %l:%M %p")%></p>
+          <span style="font-size: 24px"> <%= link_to review.writer.username, user_path(review.writer) %> </span> <span> says...</span>
+          <span style="float: right"> <%= review.created_at.strftime("%e %b %Y, %l:%M %p")%></span><br>
+          <span style="float: left"> <%= review.content %> </span>
+          <span style="float: right"> <%= "#{review.rating}/5 Stars" %> </span>
         </div>
       <% end %>
     <% else %>

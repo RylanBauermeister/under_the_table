@@ -5,9 +5,12 @@
   <% @users.each do |user| %>
   <div class="index-item">
     <h3><%= link_to user.username, user_path(user)%></h3>
-    <div>
+    <span style="float: left">
       <%= "#{user.profession} in #{user.location}"%>
-    </div>
+    </span>
+    <span style="float: right">
+      <%=user.average_review_score%>
+    </span>
   </div>
   <% end %>
 </div>
