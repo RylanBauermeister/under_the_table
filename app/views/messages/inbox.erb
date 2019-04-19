@@ -11,8 +11,11 @@
       <% if current_user.message_notifications_with(user).count > 0 %>
         <span class="number-bubble"><%=current_user.message_notifications_with(user).count%></span>
       <% end %>
+      <% recent_message = current_user.chronological_messages(user).first %><br>
+
       <div class="speech-bubble speech-bubble-left little-bubble">
-        <%= max_length(current_user.chronological_messages(user).first.content, 40)%>
+        <!-- <img class="thread-profile" src="<%=recent_message.sender.profile_picture_url%>" alt=""> -->
+        <%= max_length(recent_message.content, 40)%>
       </div>
 
 </div>

@@ -41,7 +41,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    if current_user == @user
+      @user.destroy
+      session.delete :user_id
+    end
     redirect_to users_path
   end
 
@@ -50,7 +53,7 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     redirect_to user_path(@user)
   end
-  
+
   private
 
   def set_user
