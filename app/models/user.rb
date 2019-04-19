@@ -84,6 +84,13 @@ class User < ApplicationRecord
     messages.select{|m| m.sender == user || m.receiver == user}.sort_by {|m| m.created_at}.reverse
   end
 
+  def average_review_score
+    reviews.collect(0) {|acc, review|
+      acc += review.rating
+    }
+    acc /= reviews.count
+  end
+
   def messages
     messages_sent + messages_received;
   end
